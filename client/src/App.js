@@ -8,6 +8,7 @@ const App = () => {
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [isAddingProgram, setAddingProgram] = useState(false);
     const [editProgram, setEditProgram] = useState(false);
+
     useEffect(() => {
         // Fetch programs from the API
         fetch('http://localhost:5000/programs')
@@ -17,58 +18,10 @@ const App = () => {
     }, []);
 
     const handleProgramClick = (program) => {
+        // Set the selected program when a program is clicked
         setSelectedProgram(program);
-        setAddingProgram(false);
-        setEditProgram(false);
-    };
-
-    const handleAddProgram = () => {
-        setSelectedProgram(null);
-        setAddingProgram(true);
-        setEditProgram(true); 
-    };
-
-    const handleSaveProgram = (newProgram) => {
-        fetch('http://localhost:5000/programs', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newProgram),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                // Update the programs state with the new program
-                setPrograms([...programs, data]);
-            })
-            .catch((error) => console.error('Error adding program:', error));
-    
         setAddingProgram(false); // Close the add program form
     };
-    //remeber to remove this
-    const handleDelete = async () => {
-        if (!selectedProgram) {
-            return;
-        }
-    
-        try {
-            // Make a DELETE request to your API endpoint
-            await fetch(`http://localhost:5000/programs/${selectedProgram.id}`, {
-                method: 'DELETE',
-            });
-    
-            // Update the programs state by filtering out the deleted program
-            const updatedPrograms = programs.filter(program => program.id !== selectedProgram.id);
-            setPrograms(updatedPrograms);
-    
-            // Clear the selected program
-            setSelectedProgram(null);
-        } catch (error) {
-            console.error('Error deleting program:', error);
-            // Handle error if needed
-        }
-    };
-    
     const handleDeleteProgram = async (programId) => {
         try {
             // Call the API to delete the program
@@ -81,21 +34,44 @@ const App = () => {
             setSelectedProgram(null); // Clear the selected program
 
             console.log(`Program with ID ${programId} deleted successfully.`);
+            
         } catch (error) {
             console.error('Error deleting program:', error);
             // Handle error if needed
         }
     };
 
+    const handleAddProgram = () => {
+        setSelectedProgram(null); // Clear selected program
+        setAddingProgram(true); // Open the add program form
+    };
+
+    const handleSaveProgram = (newProgram) => {
+        // Save the new program to the database
+        // You can use the fetch API or a library like Axios for making the API request
+        fetch('http://localhost:5000/programs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newProgram),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // Update the programs state with the new program
+                setPrograms([...programs, data]);
+                setAddingProgram(false); // Close the add program form
+            })
+            .catch((error) => console.error('Error adding program:', error));
+    };
 
     return (
         <div className="app-container">
             <ProgramList
                 programs={programs}
                 onProgramClick={handleProgramClick}
-                onAddProgram={handleAddProgram}
-                setPrograms={setPrograms}
                 onDelete={handleDeleteProgram}
+                onAddProgram={handleAddProgram}
                 setEditProgram={setEditProgram}
             />
             {isAddingProgram ? (
@@ -103,16 +79,15 @@ const App = () => {
                     program={null}
                     onEdit={() => {}}
                     onSave={handleSaveProgram}
-                    onDelete={handleDelete}
-                    isAddingNew
+                    onDelete={() => {}}
+                    
                 />
             ) : (
                 <ProgramDetails
                     program={selectedProgram}
                     onEdit={() => {}}
                     onSave={() => {}}
-                    onDelete={handleDelete}
-                    setPrograms={setPrograms}
+                    onDelete={() => {}}
                 />
             )}
         </div>

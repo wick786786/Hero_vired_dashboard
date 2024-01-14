@@ -4,7 +4,7 @@ import api from './api'; // Import the api.js file
 
 const ProgramDetails = ({ program, onEdit, onSave, onDelete, setPrograms ,isAddingNew}) => {
     const [isEditMode, setEditMode] = useState(isAddingNew);
-
+    const [formData, setFormData] = useState(program);
     const handleToggleEdit = () => {
         setEditMode(!isEditMode);
     };
@@ -28,6 +28,7 @@ const ProgramDetails = ({ program, onEdit, onSave, onDelete, setPrograms ,isAddi
             });
     
         }
+        setFormData({});
         } catch (error) {
             console.error('Error updating program:', error);
             // Handle error if needed
@@ -38,6 +39,7 @@ const ProgramDetails = ({ program, onEdit, onSave, onDelete, setPrograms ,isAddi
     const handleSave = (updatedData) => {
         onSave(updatedData);
         setEditMode(false);
+        setFormData({}); // Clear the form data
     };
     const handleDelete = async () => {
         try {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
+
 const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDelete,setEditProgram }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    
-    
+   
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
@@ -13,8 +13,10 @@ const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDele
     };
     const handleDeleteClick = async (program) => {
         // Your delete logic here
-        onDelete(program.id);
+        
+       await onDelete(program.id);
         // Update the programs state by removing the deleted program
+         
         setEditProgram(false);
     };
     const filteredPrograms = programs

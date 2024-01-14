@@ -1,6 +1,22 @@
 // ProgramForm.js
 import React, { useState, useEffect } from 'react';
 import api from './api'; // Adjust the path if needed
+const initialFormData = {
+    name: '',
+    price: '',
+    domain: '',
+    program_type: '',
+    registrations_status: '',
+    description: '',
+    placement_assurance: false,
+    image_url: '',
+    university_name: '',
+    faculty_profile_url: '',
+    learning_hours: '',
+    duration: '',
+    certificate_diploma: '',
+    eligibility_criteria: '',
+};
 
 const ProgramForm = ({ program, onSave,onCancel }) => {
     const [formData, setFormData] = useState(program);
@@ -17,10 +33,10 @@ const ProgramForm = ({ program, onSave,onCancel }) => {
         }));
     };
 
-    const handleSave = () => {
-        onSave(formData);
+    const  handleSave = async () => {
+        await onSave(formData);
         // Reset the form data after saving changes
-        setFormData(program);
+        setFormData({ ...initialFormData })
     };
     
     
