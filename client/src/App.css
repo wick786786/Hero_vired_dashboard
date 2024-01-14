@@ -1,0 +1,229 @@
+.app-container {
+  display: flex;
+}
+
+.program-list {
+  flex: 1;
+  padding: 20px;
+}
+
+.program-details {
+  flex: 2;
+  padding: 20px;
+}
+/* Add some styling for the search bar */
+.program-list input {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Add styling for highlighted text */
+.program-list .highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+/* Add styling for the add program button */
+.program-list .search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.program-list input {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.program-list button {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.program-list button:hover {
+  background-color: #45a049;
+}
+/* Add some styling for the form */
+.program-details form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.program-details label {
+  margin-top: 10px;
+}
+
+.program-details input,
+.program-details textarea {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.program-details button {
+  padding: 8px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.program-details button:hover {
+  background-color: #45a049;
+}
+
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff; /* White background */
+}
+
+.app-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.program-list {
+  width: 25%;
+}
+
+.program-details {
+  width: 70%;
+}
+
+/* Program List Styling */
+.program-list {
+  background-color: #f2f2f2; /* Light gray background */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.program-list .search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.program-list input {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.program-list button {
+  padding: 10px 20px;
+  background-color: #d9534f; /* Smooth red color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.program-list button:hover {
+  background-color: #c9302c; /* Darker red on hover */
+}
+
+/* Program Details Styling */
+.program-details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.program-details form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.program-details label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.program-details input,
+.program-details textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.program-details button {
+  padding: 10px 20px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.program-details button:hover {
+  background-color: #c9302c;
+}
+
+/* Add a container around the program list */
+.program-list-container {
+  background-color: #fff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Update Program List Styling */
+.program-list {
+  width: 100%; /* Take full width of the container */
+  background-color: #f2f2f2; /* Light gray background */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.program-list .search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.program-list input {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.program-list button {
+  padding: 10px 20px;
+  background-color: #d9534f; /* Smooth red color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.program-list button:hover {
+  background-color: #c9302c; /* Darker red on hover */
+}
+
+/* Add hover effect for each program */
+.program-list li {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.program-list li:hover {
+  background-color: #333; /* Dark gray on hover */
+  color: #fff;
+}
