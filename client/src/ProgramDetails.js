@@ -39,7 +39,20 @@ const ProgramDetails = ({ program, onEdit, onSave, onDelete, setPrograms ,isAddi
         onSave(updatedData);
         setEditMode(false);
     };
+    const handleDelete = async () => {
+        try {
+            await api.deleteProgram(program.id);
 
+            // Update the programs state by removing the deleted program
+            setPrograms((prevPrograms) => prevPrograms.filter((p) => p.id !== program.id));
+
+            // Clear the selected program
+            onEdit(null);
+        } catch (error) {
+            console.error('Error deleting program:', error);
+            // Handle error if needed
+        }
+    };
     return (
         <div className="program-details">
             {program ? (
@@ -56,9 +69,7 @@ const ProgramDetails = ({ program, onEdit, onSave, onDelete, setPrograms ,isAddi
                         onCancel={handleToggleEdit}
                     />
 
-                    {!isEditMode && (
-                        <button onClick={onDelete}>Delete</button>
-                    )}
+                   
                 </>
             ) : (
                 <>

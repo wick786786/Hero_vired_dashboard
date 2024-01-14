@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 
-const ProgramList = ({ programs, onProgramClick, onAddProgram }) => {
+const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDelete,setEditProgram }) => {
     const [searchTerm, setSearchTerm] = useState('');
-
+    
+    
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
     const handleProgramClick = (program) => {
         onProgramClick(program);
+        setEditProgram(false); // Turn off edit mode when a program is clicked
+    };
+    const handleDeleteClick = async (program) => {
+        // Your delete logic here
+        onDelete(program.id);
+        // Update the programs state by removing the deleted program
+        setEditProgram(false);
     };
     const filteredPrograms = programs
         .filter((program) => program.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -34,6 +42,7 @@ const ProgramList = ({ programs, onProgramClick, onAddProgram }) => {
                 {filteredPrograms.map((program) => (
                     <li className="program-list-container" key={program.id} onClick={() => handleProgramClick(program)}>
                         {program.name}
+                      <button onClick={() => handleDeleteClick(program)}>Delete</button>
                     </li>
                 ))}
             </ul>
