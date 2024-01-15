@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { FaTrash , FaPlus} from 'react-icons/fa';
 
 const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDelete,setEditProgram }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -16,7 +16,7 @@ const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDele
         
        await onDelete(program.id);
         // Update the programs state by removing the deleted program
-         
+        window.location.reload();
         setEditProgram(false);
     };
     const filteredPrograms = programs
@@ -27,24 +27,30 @@ const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDele
             if (b.name.toLowerCase().startsWith(searchTerm.toLowerCase())) return 1;
             return 0;
         });
-
+        const handleAddProgram = () => {
+            onAddProgram();
+            setEditProgram(true); // Turn on edit mode when the plus button is clicked
+        };
     
 
     return (
         <div className="program-list">
             <h2>Programs</h2>
+            <div className="search-add-container">
             <input
                 type="text"
                 placeholder="Search by Program Name"
                 value={searchTerm}
                 onChange={handleSearchChange}
             />
-             <button onClick={onAddProgram}>+</button>
+             <button className="add-program-btn" onClick={handleAddProgram}><FaPlus/></button>
+             </div>
             <ul>
                 {filteredPrograms.map((program) => (
                     <li className="program-list-container" key={program.id} onClick={() => handleProgramClick(program)}>
                         {program.name}
-                      <button onClick={() => handleDeleteClick(program)}>Delete</button>
+                      
+                       <FaTrash className="delete-icon" onClick={() => handleDeleteClick(program)} />
                     </li>
                 ))}
             </ul>

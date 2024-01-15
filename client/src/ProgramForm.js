@@ -34,6 +34,15 @@ const ProgramForm = ({ program, onSave,onCancel }) => {
     };
 
     const  handleSave = async () => {
+        const requiredFields = ['name', 'price', 'domain', 'program_type', 'registrations_status', 'description'];
+    
+        const missingFields = requiredFields.filter(field => !formData[field]);
+    
+        if (missingFields.length > 0) {
+            // Display a pop-up or message to alert the user about missing fields
+            alert(`Please fill out the following fields: ${missingFields.join(', ')}`);
+            return;
+        }
         await onSave(formData);
         // Reset the form data after saving changes
         setFormData({ ...initialFormData })

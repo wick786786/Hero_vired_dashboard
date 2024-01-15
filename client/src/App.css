@@ -227,3 +227,43 @@ body {
   background-color: #333; /* Dark gray on hover */
   color: #fff;
 }
+/* Add this to your CSS stylesheet */
+.program-list-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.program-name {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.delete-icon {
+  cursor: pointer;
+}
+
+/* Add this to your CSS stylesheet */
+.search-add-container {
+  display: flex;
+  align-items: center;
+}
+
+.add-program-btn {
+  margin-left: 10px; /* Adjust the margin as needed */
+    font-size: 7px; 
+}
+/* Add this to your CSS file or style section */
+.save-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.edit-button {
+  /* Your existing styles */
+  font-size: 14px; /* Adjust the font size to make the button smaller */
+  padding:4px; /* Adjust padding for smaller dimensions */
+}
+
+/* Rest of your existing styles */
+

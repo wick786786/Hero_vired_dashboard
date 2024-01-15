@@ -80,6 +80,7 @@ const ProgramDetails = ({ program, onEdit, onSave, onDelete, setPrograms ,isAddi
                         program={{ isEditMode }}
                         onSave={handleSave}
                         onCancel={handleToggleEdit}
+                        readOnly={!isEditMode}
                     />
                 </>
             )}
