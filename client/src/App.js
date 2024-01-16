@@ -8,6 +8,9 @@ const App = () => {
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [isAddingProgram, setAddingProgram] = useState(false);
     const [editProgram, setEditProgram] = useState(false);
+    // Inside the App component
+
+
 
     useEffect(() => {
         // Fetch programs from the API
@@ -21,6 +24,7 @@ const App = () => {
         // Set the selected program when a program is clicked
         setSelectedProgram(program);
         setAddingProgram(false); // Close the add program form
+        setEditProgram(false);
     };
     const handleDeleteProgram = async (programId) => {
         try {
@@ -43,7 +47,9 @@ const App = () => {
 
     const handleAddProgram = () => {
         setSelectedProgram(null); // Clear selected program
+        setEditProgram(true);
         setAddingProgram(true); // Open the add program form
+        
     };
 
     const handleSaveProgram = (newProgram) => {
@@ -75,19 +81,26 @@ const App = () => {
                 setEditProgram={setEditProgram}
             />
             {isAddingProgram ? (
+                
                 <ProgramDetails
                     program={null}
                     onEdit={() => {}}
                     onSave={handleSaveProgram}
                     onDelete={() => {}}
+                    setEditProgram={setEditProgram}
                     
                 />
+                
+                
             ) : (
                 <ProgramDetails
                     program={selectedProgram}
                     onEdit={() => {}}
                     onSave={() => {}}
                     onDelete={() => {}}
+                    onAddProgram={handleAddProgram}
+                    setEditProgram={setEditProgram}
+                    
                 />
             )}
         </div>
