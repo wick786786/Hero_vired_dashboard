@@ -15,5 +15,5 @@ as i clicked save it appeared in program list
 editing exisiting program here i will change course name of CS50 to data structures and algorithm![Screenshot 2024-01-16 223517](https://github.com/wick786786/Hero_vired_dashboard/assets/86571155/8b9fb9bc-dbf1-45ee-af8c-cc054026ce13)
 ![Screenshot 2024-01-16 223536](https://github.com/wick786786/Hero_vired_dashboard/assets/86571155/88c8f30d-59df-4c46-9022-aa8ed25b21dc)
 # feature 4
-deleting a program as i click on delete icon program will be deleted from the list
+deleting a program as i click on delete icon program will be deleted from the list as i deleted data structure and Algorithm course
 ![Screenshot 2024-01-16 223556](https://github.com/wick786786/Hero_vired_dashboard/assets/86571155/fc9409ed-cec5-4f08-a77c-7ebba5f873b3)
