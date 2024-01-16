@@ -6,7 +6,11 @@ const api = {
         const data = await response.json();
         return data;
     },
-
+    getAllPrograms: async () => {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data;
+    },
     updateProgram: async (id, updatedData) => {
         const response = await fetch(`${apiUrl}/${id}`, {
             method: 'PUT',
