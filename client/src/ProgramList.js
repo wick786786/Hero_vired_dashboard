@@ -3,13 +3,14 @@ import { FaTrash , FaPlus} from 'react-icons/fa';
 
 const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDelete,setEditProgram }) => {
     const [searchTerm, setSearchTerm] = useState('');
-   
+    
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
     const handleProgramClick = (program) => {
+        setEditProgram(false);
         onProgramClick(program);
-        setEditProgram(false); // Turn off edit mode when a program is clicked
+         // Turn off edit mode when a program is clicked
     };
     const handleDeleteClick = async (program) => {
         // Your delete logic here
@@ -28,8 +29,12 @@ const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDele
             return 0;
         });
         const handleAddProgram = () => {
-            onAddProgram();
+            
+             onAddProgram();
+             console.log('add')
             setEditProgram(true); // Turn on edit mode when the plus button is clicked
+            
+            
         };
     
 
@@ -43,7 +48,7 @@ const ProgramList = ({ programs, onProgramClick, onAddProgram,setPrograms,onDele
                 value={searchTerm}
                 onChange={handleSearchChange}
             />
-             <button className="add-program-btn" onClick={handleAddProgram}><FaPlus/></button>
+             <button className="add-program-btn" onClick={handleAddProgram}>Add</button>
              </div>
             <ul>
                 {filteredPrograms.map((program) => (
