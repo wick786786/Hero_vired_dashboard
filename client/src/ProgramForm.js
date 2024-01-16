@@ -1,3 +1,4 @@
+
 // ProgramForm.js
 import React, { useState, useEffect } from 'react';
 import api from './api'; // Adjust the path if needed
@@ -18,12 +19,13 @@ const initialFormData = {
     eligibility_criteria: '',
 };
 
-const ProgramForm = ({ program, onSave,onCancel }) => {
+const ProgramForm = ({ program, onSave,onCancel ,newflag}) => {
     const [formData, setFormData] = useState(program);
 
     useEffect(() => {
-        setFormData(program);
+         setFormData(program);
     }, [program]);
+    
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -40,18 +42,25 @@ const ProgramForm = ({ program, onSave,onCancel }) => {
     
         if (missingFields.length > 0) {
             // Display a pop-up or message to alert the user about missing fields
+            program.isEditMode=!program.isEditMode;
             alert(`Please fill out the following fields: ${missingFields.join(', ')}`);
+
             return;
         }
         await onSave(formData);
         // Reset the form data after saving changes
         setFormData({ ...initialFormData })
+        program.isEditMode=!program.isEditMode;
+        window.location.reload();
     };
     
     
 
     return (
-        <form>
+        <form className="program-form">
+            <button type="button" onClick={onCancel}>
+                {formData.isEditMode ? 'Cancel' : 'Edit'}
+            </button>
             <label>Name:</label>
             <input
                 type="text"
@@ -187,9 +196,7 @@ const ProgramForm = ({ program, onSave,onCancel }) => {
             )}
             
              
-            <button type="button" onClick={onCancel}>
-                {formData.isEditMode ? 'Cancel' : 'Edit'}
-            </button>
+            
         </form>
     );
 };
